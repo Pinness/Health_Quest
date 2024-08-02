@@ -1,9 +1,17 @@
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, Text, ForeignKey, Boolean
 from sqlalchemy.orm import Session, relationship, declarative_base
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 
-Base = declarative_base()
+# Construct the database URI
+db_url = os.getenv('SQLALCHEMY_DATABASE_URI')
+
+Base = declarative_base()  # An instance of the declarative_base class
 
 class User(Base):
     __tablename__ = 'users'
@@ -74,11 +82,14 @@ class UserResponse(Base):
 
 
 
+try:
+    engine = create_engine(DATABASE_URI, pool_pre_ping=True)
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    Base.metadata.create_all(engine)
+except:
+    print("Error in table creation, connection failed)
 
-engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format("root", "1212", "Health_Quest"), pool_pre_ping=True)
-Base.metadata.create_all(engine)
 
-session = Session(engine)
 
 # user = User(id=3, name='Martin')
 # session.add(user)
