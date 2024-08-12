@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Categories{% endblock %}
+
+{% block content %}
+    <h2>Quiz Categories</h2>
+    <a href="/">Home</a>
+    <div>
+         <!-- Iterate through each category and display its details -->
+        {% for category in categories %}
+            <div class="categories-item">
+                <h3>{{ category.category_name }}</h3>
+                <p>{{ category.category_description }}</p>
+                <!-- Link to view quizzes for the selected category -->
+                 <a href="{{ url_for('show_quizzes', category_id=category.id) }}">View Quizzes</a>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

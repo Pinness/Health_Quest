@@ -166,6 +166,62 @@ class Category(db.Model):
     def __repr__(self):
         return f'<Category {self.category_name}>'
 
+#Define routes for displaying categories
+@app.route('/categories', strict_slashes=False)
+def show_categories():
+    #Fetch the list of categories from the database
+    categories = fetch_categories_from_database()
+
+    # Render the HTML template to display the categories
+    return render_categories_page(categories)
+
+
+# Fetch Categories from the database
+def fetch_categories_from_database():
+    # Query all categories from the database
+    categories = Category.query.all()
+
+    # convert the query results into a list of dictionaries
+    categories_list = []
+    for category in categories:
+        category_info = {
+            'id': category.category_id,
+            'category_name': category.category_name,
+            'category_description': category.category_description
+        }
+        categories_list.append(category_info)
+
+    # Return the list of category dictionaries
+    return categories_list
+
+# Render the Categories Page
+def render_categories_page(categories_data):
+    # Generate the category html page
+    return render_template('categories.html', categories=categories_data)
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -182,6 +238,56 @@ class Quiz(db.Model):
 
     def __repr__(self):
         return f'<Quiz {self.quiz_title}>'
+
+
+# Define the route to display quizzes for a specific category
+@app.route('/quizzes/<int:category_id>')
+def show_quizzes(category_id):
+    """
+    Fetch and display quizzes for the given category_id.
+
+    Parameters:
+    - category_id (int): The ID of the category for which quizzes are to be displayed.
+
+    Returns:
+    - Rendered HTML template with quizzes data or an error page if no quizzes are found.
+    """
+
+     # Query the Quiz model to get all quizzes that belong to the specified category
+    quizzes = Quiz.query.filter_by(category_id=category_id).all()
+
+
+     # Prepare Data
+    quizzes_data = []
+    for quiz in quizzes:
+        # Create a dictionary with quiz details
+        quiz_info = {
+            'id': quiz.quiz_id,
+            'title': quiz.quiz_title,
+            'description': quiz.quiz_description
+        }
+        # Add quiz details to the list
+        quizzes_data.append(quiz_info)
+
+    # Render the 'quizzes.html' template and pass the quiz data and category ID to it
+    return render_template('quizzes.html', quizzes=quizzes_data, category_id=category_id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
