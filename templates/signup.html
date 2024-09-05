@@ -1,0 +1,105 @@
+
+
+
+
+{% extends "base.html" %} <!-- Extends the base template to inherit common layout and styles -->
+
+{% block content %} <!-- Marks the beginning of the content block to be inserted into the base template -->
+<div class="container"> <!-- Creates a container to hold the form and other content -->
+
+    <h1>Welcome to Health_Quest</h1> <!-- Page heading welcoming users to the Health_Quest app -->
+    
+    <p>Please log in or register to access our quizzes and resources.</p> <!-- Instruction text for the user -->
+
+    <!-- Form for user authentication (login or register) -->
+    <form id="AuthForm" action="{{ url_for('signup') }}" method="post">
+        <!-- Grouping the username input field -->
+         <!-- Specifies the input type as text for username -->
+          <!-- Name attribute for the username input field -->
+           <!-- Placeholder text displayed in the input field -->
+            <!-- CSS class for styling the input field -->
+             <!-- Ensures the field cannot be left empty -->
+            <input
+                type="text" 
+                name="username" 
+                placeholder="Username" 
+                class="input_field" 
+                required 
+            />
+        </div>
+        
+        <!-- Grouping the password input field -->
+         <!-- Specifies the input type as password for secure entry -->
+          <!-- Name attribute for the password input field -->
+           <!-- Placeholder text displayed in the input field -->
+            <!-- CSS class for styling the input field -->
+             <!-- Ensures the field cannot be left empty -->
+        <div class="form-group">
+            <input
+                type="password" 
+                name="password" 
+                placeholder="Password" 
+                class="input_field" 
+                required 
+            />
+        </div>
+        
+        <!-- Grouping the email input field -->
+         <!-- Specifies the input type as email for validation -->
+          <!-- Name attribute for the email input field -->
+           <!-- Placeholder text displayed in the input field -->
+            <!-- CSS class for styling the input field -->
+             <!-- Ensures the field cannot be left empty -->
+        <div class="form-group">
+            <input
+                type="email" 
+                name="email" 
+                placeholder="Email" 
+                class="input_field" 
+                required 
+            />
+        </div>
+
+        <!-- Grouping the login and register buttons -->
+        <div class="form-group">
+            <!-- Specifies the input type as submit to send the form data -->
+             <!-- Text displayed on the button -->
+              <!-- CSS class for styling the login button -->
+               <!-- Specifies the input type as button for a non-submit button -->
+                <!-- JavaScript function to handle button click -->
+            <input
+                type="submit" 
+                value="Login" 
+                class="btn btn-login" 
+                onclick="setActionForm('login')" 
+            />
+            <!-- Text displayed on the button -->
+             <!-- CSS class for styling the register button -->
+              <!-- JavaScript function to handle button click -->
+            <input
+                type="button" 
+                value="Register" 
+                class="btn btn-register" 
+                onclick="setActionForm('register')" 
+            />
+        </div>
+    </form>
+</div>
+
+<!-- JavaScript to dynamically set the form action based on button clicked -->
+<script>
+    function setActionForm(action) {
+        let form = document.getElementById("AuthForm"); // Gets the form element by its ID
+
+        // Check which button was clicked and set the form action accordingly
+        if (action === 'login') {
+            form.action = "{{ url_for('login') }}"; // Set form action to login route
+        } else if (action === 'signup') {
+            form.action = "{{ url_for('signup') }}"; // Set form action to register route
+        }
+        form.method = 'post'; // Set form method to POST for sending data securely
+        form.submit(); // Submit the form
+    }
+</script>
+{% endblock %} <!-- Marks the end of the content block -->
+

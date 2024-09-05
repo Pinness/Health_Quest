@@ -11,8 +11,22 @@
             <div class="categories-item">
                 <h3>{{ category.category_name }}</h3>
                 <p>{{ category.category_description }}</p>
+
+                <!-- Display quizzes for this category -->
+                 <ul class="quiz-list">
+                    {% for quiz in category.quizzes %}
+                        <li class="quiz-item">
+                            <a href="{{ url_for('show_quiz', quiz_id=quiz.quiz_id) }}">
+                                <h4>{{ quiz.quiz_title }}</h4>
+                            </a>
+                            <!--<p>{{ quiz.quiz_description }}</p> -->
+                        
+                        </li>
+                    {% endfor %}
+                 </ul>
+
+
                 <!-- Link to view quizzes for the selected category -->
-                 <a href="{{ url_for('show_quizzes', category_id=category.id) }}">View Quizzes</a>
             </div>
         {% endfor %}
 

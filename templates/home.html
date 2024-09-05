@@ -1,69 +1,41 @@
-{% extends "base.html" %} 
-{% block content %}   
+{% extends "base.html" %}
 
-<div class="container">
-    <h1>Welcome</h1>
-    
-    <form id="AuthForm" action="{{url_for('login')}}" method="post">
-        <input
-            type="text"
-            name="username"
-            placeholder="username"
-            class="input_field"
-        />
+{% block title %}
+    Welcome to Health_Quest - Your Gateway to HIV Education
+{% endblock %}
 
-        <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            class="input_field"
-        />
+{% block content %}
+    <header>
+        <h1>Welcome to Health_Quest</h1>
+        <p>Empowering Communities with Essential HIV Education</p>
+    </header>
 
-        <input 
-            type="email" 
-            name="email" 
-            placeholder="email" 
-            class="input_field" 
-        />
+    <section class="intro">
+        <h2>Why Health_Quest?</h2>
+        <p>HIV remains a significant public health concern worldwide. At Health_Quest, we believe that having accurate and timely information can make a substantial difference in combating this issue. Our mission is to provide you with valuable resources and knowledge to help you stay informed and make a positive impact in your community.</p>
+        <p>By understanding the facts and staying updated on HIV prevention, treatment, and care, you contribute to a healthier and more informed society. Join us in our quest to spread awareness and education!</p>
+        <a href="/signup" class="btn-signup">Sign Up Now</a>
+    </section>
 
-        <input 
-            type="submit" 
-            value="Login"
-            class="btn btn-login"
-            onclick="setActionForm('login')"
-        />
+    <section class="categories-preview">
+        <h2>Explore Our Quiz Categories</h2>
+        <p>Our quizzes are designed to test and expand your knowledge on various aspects of HIV. Each category is carefully crafted to provide insightful information and encourage active learning.
+            Our goal is to spread awareness, dispel myths, and empower individuals with the knowledge they need to make informed decisions about their health.
+        </p>
+        <ul class="category-list">
+            {% for category in categories %}
+                <li class="category-item">
+                    <h3>{{ category.category_name }}</h3>
+                    <p>{{ category.category_description }}</p>
+                    <a href="/signup" class="btn-signup">Sign Up to Access Quizzes</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 
-        
-
-        <input 
-            type="button"
-            value="Register"
-            class="btn btn-login"
-            onclick="setActionForm('register')"
-        />
-
-
-    </form>
-</div>
-
-
-<!-- it will check if the action we clicked is the login button or register button -->
-<script>
-    function setActionForm(action){
-        let form = document.getElementById("AuthForm"); // to target the class in the html
-
-        //what happens if login button is clicked
-        if (action === 'login'){
-        form.action = "{{url_for('login')}}";
-        form.method = 'post';
-        form.submit();
-        
-        //what happens if register button is clicked
-        } else if (action === "register") {
-        form.action = "{{url_for('register')}}";
-        form.method = 'post';
-        form.submit();
-    }
-}
-</script>
+    <section class="call-to-action">
+        <h2>Ready to Make a Difference?</h2>
+        <p>Join Health_Quest today and be part of a community dedicated to improving health literacy and fostering positive change. Sign up now to start your journey with us and gain access to all our educational resources.</p>
+        <a href="/signup" class="btn-signup">Get Started</a>
+    </section>
 {% endblock %}

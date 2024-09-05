@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if quiz_title and quiz_description %}
+        <!-- Display quiz overview when accessed via /quiz/<int:quiz_id> -->
+        <h2>{{ quiz_title }}</h2>
+        <p>{{ quiz_description }}</p>
+        <a href="{{ url_for('start_quiz', quiz_id=quiz_id) }}">Start Quiz</a>
+    {% elif question and question_index is not none %}
+        <!-- Display quiz questions when accessed via /start_quiz/<int:quiz_id> or /next_question -->
+        <h2>{{ quiz.quiz_title }}</h2>
+        <h3>Question {{ question_index + 1 }}:</h3>
+        <p>{{ question.text }}</p>
+        
+        <form action="{{ url_for('next_question') }}" method="post">
+            <input type="hidden" name="question_id" value="{{ question.question_id }}" />
+            
+            {% for answer in question.answers %}
+                <input type="radio" id="answer{{ answer.answer_id }}" name="selected_answer_id" value="{{ answer.answer_id }}">
+                <label for="answer{{ answer.answer_id }}">{{ answer.ans_text }}</label><br>
+            {% endfor %}
+            
+            <input type="submit" value="Next" />
+        </form>
+    {% elif score is not none %}
+        <!-- Display the score when the quiz ends -->
+        <h2>Quiz Complete!</h2>
+        <p>Your score: {{ score }}%</p>
+    {% endif %}
+{% endblock %}
