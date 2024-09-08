@@ -1,5 +1,6 @@
+/* Global Styling */
 body {
-  background-color: wheat;
+  background-color: rgb(229, 129, 52);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #333;
   display: flex;
@@ -7,12 +8,339 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  padding: 0;
   text-align: center;
 }
+
+
+/*Hero Section */
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Remove extra padding */
+}
+
+
+/* Hero Section */
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 60px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the overlay content */
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.btn-hero {
+  background-color: #ff6f61;
+  padding: 15px 30px;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-hero:hover {
+  background-color: #e64e3f;
+}
+
+.btn-hero {
+  background-color: #ff6f61;
+  padding: 15px 30px;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.btn-hero:hover {
+  background-color: #e64e3f;
+}
+
+
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  background-color: rgb(250, 214, 10);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+p {
+  color: #555;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hoover {
+  text-decoration: underline;
+}
+
+/* Introduction Section */
+.intro {
+  padding: 60px 0;
+  background-color: #ffc561;
+  text-align: center;
+}
+
+.intro p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+/* Categories Section */
+.categories-preview {
+  padding: 60px 0;
+  background-color: #ffc561;
+  text-align: center;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 30px;
+  padding: 0;
+}
+
+.category-item {
+  width: 30%;
+  margin: 10px 0;
+  padding: 20px;
+  background-color:  #ffc561;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-category {
+  background-color: #6200ea;
+  color: #ffc561;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-category:hover {
+  background-color: #3700b3;
+}
+
+
+/* Call to action Section */
+.call-to-action {
+  padding: 60px 0;
+  background-color: #ffc561;
+  color: white;
+  text-align: center;
+}
+
+.call-to-action h2 {
+  font-size: 36px;
+}
+
+.btn-cta {
+  background-color: #ffc561;
+  color: #FFD400;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.btn-cta:hover {
+  background-color: #e64e3f;
+  color: white;
+}
+
+
+/* Header and Footer */
 
 header {
   width: 100%;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px 0;
+  padding: 15px 0;
+  /* padding: 20px 0; */
 }/*# sourceMappingURL=styles.css.map */
+
+footer {
+  background-color: #b39ad6;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  width: 150%;
+  bottom: 0;
+}
+
+
+/*Forms (sign up, login, Quiz Quetions) */
+/*.input_field {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} */
+
+.input-field{
+  width: 100%;
+  padding: 10px 0;
+  margin: 10px 0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #6200ea;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.btn:hover {
+  background-color: #3700b3;
+}
+
+.btn-signup, .btn-login, .btn-logout, .btn-register {
+  display: inline-block;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+.categories-item, .quiz-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+.quiz-item a {
+  color: #6200ea;
+  font-weight: bold;
+}
+
+.category-list, .quiz-list {
+  list-style: none;
+  padding: 0;
+}
+.category-item, .quiz-item {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+h4 {
+  margin-top: 0
+}
+
+
+
+
+
+
+
+
+.result {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
+
+input[type="radio"] {
+  margin: 10px;
+}
+
+.actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.actions a{
+  margin-right: 10px;
+}
+
+h2 {
+  color: #6200ea;
+}
+
+
+
+
+
+/* Buttons */
+.btn-primary {
+  background-color: #6200ea;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: black;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #3700b3;
+  color: white;
+}

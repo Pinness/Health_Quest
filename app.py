@@ -44,7 +44,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 login_manager = LoginManager()
 
 # This tells Flask-Login to redirect to this view if a user tries to access a protected page without being authenticated
-login_manager.login_view = 'login'
+login_manager.login_view = 'signup'
 
 # This binds the LoginManager to the Flask app so that it can manage user sessions
 login_manager.init_app(app)
@@ -87,6 +87,9 @@ class User(db.Model, UserMixin):  # Inherit UserMixin
 
 @login_manager.user_loader
 def load_user(id):
+    # Flask-Login calls this function to retrieve the user from the database
+    # The user ID stored in the session is passed as an argument (id)
+
     # Retrieve the user from the database using the user_id
     return User.query.get(int(id))
       
@@ -191,9 +194,11 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user and user.check_password(password):
         login_user(user)  # Use Flask-Login's login_user function
+
+        #If the login is successful, the user is redirected to the dashboard page.
         return redirect(url_for('dashboard'))  # Redirect to dashboard
     else:
-        return render_template('login.html', error="Invalid username or password")  # Reload login with error message
+        return render_template('signup.html', error="Invalid username or password")  # Reload login with error message
 
 
 #Register
@@ -219,7 +224,10 @@ def signup():
             db.session.commit()
 
             #create a new session for the user
-            session['username'] = username
+            #session['username'] = username
+            login_user(new_user)
+
+
             #redirect the user to the dashboard
             return redirect(url_for('dashboard'))
 
@@ -304,6 +312,7 @@ def logout():
 
 
 @app.route('/categories', strict_slashes=False)
+@login_required
 def show_categories():
     """
     Fetches the list of categories and their associated quizzes from the database.

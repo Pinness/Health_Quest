@@ -5,37 +5,48 @@
 {% endblock %}
 
 {% block content %}
-    <header>
-        <h1>Welcome to Health_Quest</h1>
-        <p>Empowering Communities with Essential HIV Education</p>
-    </header>
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('/static/images/hero-image.png');">
+        <div class="hero-overlay">
+            <h1>Welcome to Health_Quest</h1>
+            <p>Your Gateway to HIV Education and Empowerment</p>
+            <a href="/signup" class="btn btn-hero">Get Started</a>
+        </div>
+    </section>
 
+    <!-- Introduction Section -->
     <section class="intro">
-        <h2>Why Health_Quest?</h2>
-        <p>HIV remains a significant public health concern worldwide. At Health_Quest, we believe that having accurate and timely information can make a substantial difference in combating this issue. Our mission is to provide you with valuable resources and knowledge to help you stay informed and make a positive impact in your community.</p>
-        <p>By understanding the facts and staying updated on HIV prevention, treatment, and care, you contribute to a healthier and more informed society. Join us in our quest to spread awareness and education!</p>
-        <a href="/signup" class="btn-signup">Sign Up Now</a>
+        <div class="container">
+            <h2>Empowering Communities with Essential HIV Education</h2>
+            <p>HIV remains a significant public health concern worldwide. Health_Quest is designed to expand your knowledge on various aspects of HIV, spreading awareness and dispelling myths. By understanding the facts, you contribute to a healthier and more informed society.</p>
+            <a href="/signup" class="btn btn-signup">Sign Up Now</a>
+        </div>
     </section>
 
+    <!-- Quiz Categories Section -->
     <section class="categories-preview">
-        <h2>Explore Our Quiz Categories</h2>
-        <p>Our quizzes are designed to test and expand your knowledge on various aspects of HIV. Each category is carefully crafted to provide insightful information and encourage active learning.
-            Our goal is to spread awareness, dispel myths, and empower individuals with the knowledge they need to make informed decisions about their health.
-        </p>
-        <ul class="category-list">
-            {% for category in categories %}
-                <li class="category-item">
-                    <h3>{{ category.category_name }}</h3>
-                    <p>{{ category.category_description }}</p>
-                    <a href="/signup" class="btn-signup">Sign Up to Access Quizzes</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="container">
+            <h2>Explore Our Quiz Categories</h2>
+            <p>Test your knowledge on various topics related to HIV education.</p>
+
+            <ul class="category-list">
+                {% for category in categories %}
+                    <li class="category-item">
+                        <h3>{{ category.category_name }}</h3>
+                        <p>{{ category.category_description }}</p>
+                        <a href="/signup" class="btn btn-category">Access Quizzes</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </section>
 
+    <!-- Call to Action Section -->
     <section class="call-to-action">
-        <h2>Ready to Make a Difference?</h2>
-        <p>Join Health_Quest today and be part of a community dedicated to improving health literacy and fostering positive change. Sign up now to start your journey with us and gain access to all our educational resources.</p>
-        <a href="/signup" class="btn-signup">Get Started</a>
+        <div class="container">
+            <h2>Join the Movement to Spread Awareness</h2>
+            <p>Health_Quest is more than a platform—it's a movement. By signing up, you're contributing to a healthier, better-informed world. Ready to make a difference?</p>
+            <a href="/signup" class="btn btn-cta">Start Your Journey</a>
+        </div>
     </section>
 {% endblock %}

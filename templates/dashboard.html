@@ -5,6 +5,6 @@
     <h1>Welcome, {{username}}!</h1>
     <p>Welcome to your Dashboard</p>
     <!--<a href="/categories">Categories</a> -->
-    <a href="{{ url_for('show_categories') }}">Categories</a>
+    <a href="{{ url_for('show_categories') }}" class="btn btn-logout">Categories</a>
     <a href="{{url_for('logout')}}"  class="btn btn-logout">Logout</a> <!-- Ability for the user to log out at a later stage -->
 {% endblock %}
