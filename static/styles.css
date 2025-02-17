@@ -121,6 +121,101 @@ a:hoover {
   font-size: 18px;
 }
 
+
+
+/* About Section */
+.about {
+    padding: 60px 0;
+    background-color: #ffc561;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.about-content h2 {
+    color: #6200ea;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Connect Section */
+.connect-section {
+  background-color:  #ffc561;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.connect-section h3 {
+  font-size: 28px;
+  color: #6200ea;
+  margin-bottom: 20px;
+}
+
+.connect-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Profile Links */
+.profile-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-item {
+  display: inline-block;
+  margin: 10px;
+}
+
+.profile-item a {
+  background-color: #6200ea;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.profile-item a:hover {
+  background-color: #3700b3;
+}
+
+/* GitHub Repository Link */
+.github-repo {
+  margin-top: 20px;
+}
+
+.github-repo a {
+  background-color: #6200ea;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.github-repo a:hover {
+  background-color: #3700b3;
+}
+
+
+
+
 /* Categories Section */
 .categories-preview {
   padding: 60px 0;
@@ -259,7 +354,7 @@ footer {
   border: 1px solid #ddd;
   padding: 15px;
   margin-bottom: 10px;
-  background-color: #f4f4f4;
+  background-color: #ffc561(142, 131, 10, 0.6);
   border-radius: 5px;
 }
 

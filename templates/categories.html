@@ -5,10 +5,10 @@
 {% block content %}
     <h2>Quiz Categories</h2>
     <a href="/">Home</a>
-    <div>
+    <div class="container connect-section">
          <!-- Iterate through each category and display its details -->
         {% for category in categories %}
-            <div class="categories-item">
+            <div class="categories-item connect-section">
                 <h3>{{ category.category_name }}</h3>
                 <p>{{ category.category_description }}</p>
 
