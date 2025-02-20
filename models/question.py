@@ -15,3 +15,6 @@ class Question(Base):
     quiz = relationship('Quiz', back_populates='questions')
     answers = relationship('Answer', back_populates='question')
     user_responses = relationship('UserResponse', back_populates='question')
+
+    def __repr__(self):
+        return f'<Question {self.tesxt}>'

@@ -10,5 +10,7 @@ class Category(Base):
     category_description = Column(Text)
 
 
-    quizzes = relationship('Quiz', back_populates='categories')
-
+    quizzes = relationship('Quiz', back_populates='category')
+    
+    def __repr__(self):
+        return f'<ategory {self.category_name}>'

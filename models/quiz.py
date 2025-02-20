@@ -14,3 +14,6 @@ class Quiz(Base):
 
     category = relationship('Category', back_populates='quizzes')
     questions = relationship('Question', back_populates='quiz')
+
+    def __repr__(self):
+        return f'<Quiz {self.quiz_title}>'
