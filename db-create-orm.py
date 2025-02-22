@@ -3,8 +3,8 @@ from sqlalchemy import Column, Integer, String, Text, ForeignKey, Boolean
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
-from sqlalchemy.orm import DeclarativeBase
-# from .base import Base
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from models.base import Base
 from dotenv import load_dotenv
 import os
 
@@ -16,7 +16,7 @@ load_dotenv()
 # Construct the database URI
 db_url = os.getenv('SQLALCHEMY_DATABASE_URI')
 
-Base = declarative_base()  # An instance of the declarative_base class
+#Base = declarative_base()  # An instance of the declarative_base class
 
 
 class User(Base, UserMixin):
@@ -51,8 +51,8 @@ class Answer(Base):
         return f'<Answer {self.ans_text}>'
 
 
-class Base(DeclarativeBase):
-    pass
+#class Base(DeclarativeBase):
+ #   pass
 
 
 class Category(Base):
@@ -66,7 +66,7 @@ class Category(Base):
     quizzes = relationship('Quiz', back_populates='category')
     
     def __repr__(self):
-        return f'<ategory {self.category_name}>'
+        return f'<category {self.category_name}>'
 
 
 class Question(Base):
@@ -83,7 +83,7 @@ class Question(Base):
     user_responses = relationship('UserResponse', back_populates='question')
 
     def __repr__(self):
-        return f'<Question {self.tesxt}>'
+        return f'<Question {self.text}>'
 
 
 class Quiz(Base):
@@ -102,22 +102,22 @@ class Quiz(Base):
         return f'<Quiz {self.quiz_title}>'
 
 
-class User(Base, UserMixin):
-    __tablename__ = 'users'
+#class User(Base, UserMixin):
+ #   __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(20), unique=True, nullable=False)
-    email = Column(String(20))
-    password = Column(String(128), nullable=False) # Store hashed password
+  #  id = Column(Integer, primary_key=True, autoincrement=True)
+   # username = Column(String(20), unique=True, nullable=False)
+    #email = Column(String(20))
+    #assword = Column(String(128), nullable=False) # Store hashed password
 
 
-    def set_password(self, password):
-        """Hash the password and store it."""
-        self.password = generate_password_hash(password)
+    #def set_password(self, password):
+     #   """Hash the password and store it."""
+      #  self.password = generate_password_hash(password)
 
-    def check_password(self, password):
-        """Check if the password matches the hashed password"""
-        return check_password_hash(self.password, password)
+    #def check_password(self, password):
+       # """Check if the password matches the hashed password"""
+        #return check_password_hash(self.password, password)
 
 
 class UserResponse(Base):
@@ -136,8 +136,8 @@ class UserResponse(Base):
 
 
 try:
-    engine = create_engine(DATABASE_URI, pool_pre_ping=True)
+    engine = create_engine(db_url, pool_pre_ping=True)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     Base.metadata.create_all(engine)
 except:
-    print("Error in table creation, connection failed)
+    print("Error in table creation, connection failed")
