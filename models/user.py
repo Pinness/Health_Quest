@@ -1,16 +1,18 @@
-from sqlalchemy import Column, Integer, String
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from sqlalchemy.orm import relationship
-from .base import Base
+#from sqlalchemy.orm import relationship
+#from .base import Base
 
-class User(Base, UserMixin):
+db = SQLAlchemy()
+
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(20), unique=True, nullable=False)
-    email = Column(String(20))
-    password = Column(String(128), nullable=False) # Store hashed password
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(20))
+    password = db.Column(db.String(128), nullable=False) # Store hashed password
 
 
     def set_password(self, password):
