@@ -13,4 +13,4 @@ class Config:
     #MYSQL_HOST=18.207.202.233
     #MYSQL_DB=Healtigrity
     #SQLALCHEMY_DATABASE_URI =mysql+mysqldb://pinness:devPiness231@18.207.202.233/Healtigrity
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///Healtigrity.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://pinness:devPiness231@18.207.202.233/Healtigrity'

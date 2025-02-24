@@ -12,6 +12,7 @@ from os import getenv # Helps to get the environmental variables
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from sqlalchemy.orm import sessionmaker
 #from sqlalchemy import create_engine
+#from Health_Quest.extensions import db
 from extensions import db #import shared db instance
 from models.model import User, Answer, Category, Question, Quiz, UserResponse
 from config import Config

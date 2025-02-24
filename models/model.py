@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(128), nullable=False) # Store hashed password
+    password = db.Column(db.String(390), nullable=False) # Store hashed password
 
 
     def set_password(self, password):
