@@ -1,3 +1,4 @@
 env_quiz
 .env
 __pycache__
+venv/

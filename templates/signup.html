@@ -4,86 +4,52 @@
 <div class="container"> <!-- Creates a container to hold the forms and other content -->
 
     <h1>Welcome to Health_Quest</h1> <!-- Page heading welcoming users to the Health_Quest app -->
-    
+
     <p>Please log in or register to access our quizzes and resources.</p> <!-- Instruction text for the user -->
 
     <!-- Login Form -->
     <form id="loginForm" action="{{ url_for('login') }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+
         <!-- Grouping the username input field -->
         <div class="form-group">
-            <input
-                type="text" 
-                name="username" 
-                placeholder="Username" 
-                class="input_field" 
-                required 
-            />
+            <input type="text" name="username" placeholder="Username" class="input_field" required />
         </div>
 
         <!-- Grouping the password input field -->
         <div class="form-group">
-            <input
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                class="input_field" 
-                required 
-            />
+            <input type="password" name="password" placeholder="Password" class="input_field" required />
         </div>
 
         <!-- Login button -->
         <div class="form-group">
-            <input
-                type="submit" 
-                value="Login" 
-                class="btn btn-login" 
-            />
+            <input type="submit" value="Login" class="btn btn-login" />
         </div>
         <p>Don't have an account? <a href="#" onclick="showRegisterForm()">Register here</a></p>
     </form>
 
     <!-- Registration Form -->
     <form id="registerForm" action="{{ url_for('signup') }}" method="post" style="display: none;">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+
         <!-- Grouping the username input field -->
         <div class="form-group">
-            <input
-                type="text" 
-                name="username" 
-                placeholder="Username" 
-                class="input_field" 
-                required 
-            />
+            <input type="text" name="username" placeholder="Username" class="input_field" required />
         </div>
 
         <!-- Grouping the password input field -->
         <div class="form-group">
-            <input
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                class="input_field" 
-                required 
-            />
+            <input type="password" name="password" placeholder="Password" class="input_field" required />
         </div>
-        
+
         <!-- Grouping the email input field -->
         <div class="form-group">
-            <input
-                type="email" 
-                name="email" 
-                placeholder="Email" 
-                class="input_field" 
-                required 
-            />
+            <input type="email" name="email" placeholder="Email" class="input_field" required />
         </div>
 
         <!-- Register button -->
         <div class="form-group">
-            <input
-                type="submit" 
-                value="Register" 
-                class="btn btn-register" 
-            />
+            <input type="submit" value="Register" class="btn btn-register" />
         </div>
         <p>Already have an account? <a href="#" onclick="showLoginForm()">Login here</a></p>
     </form>
